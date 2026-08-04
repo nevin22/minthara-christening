@@ -1,20 +1,39 @@
+import { useEffect, useRef } from 'react'
 import { event } from '../data/event'
 import Section from './Section'
 import MapButtons from './MapButtons'
 import Countdown from './Countdown'
 
 export default function Invitation() {
+  const heroRef = useRef(null)
+
+  useEffect(() => {
+    const hero = heroRef.current
+    if (!hero) return undefined
+
+    // Lock hero to the phone's visible height once, so URL-bar show/hide
+    // doesn't resize the section and cause scroll jumping.
+    const lockHeroHeight = () => {
+      hero.style.minHeight = `${window.innerHeight}px`
+    }
+
+    lockHeroHeight()
+    window.addEventListener('orientationchange', lockHeroHeight)
+
+    return () => {
+      window.removeEventListener('orientationchange', lockHeroHeight)
+    }
+  }, [])
+
   return (
     <main className="invite">
-      <header className="hero">
+      <header ref={heroRef} className="hero">
         <div className="hero__veil" aria-hidden="true" />
         <div className="hero__content">
-          <p className="hero__eyebrow">With joyful hearts, we invite you to the</p>
+          <p className="hero__eyebrow">With joyful hearts, we invite you to</p>
           <h1 className="hero__brand">{event.babyName}</h1>
           <p className="hero__title">{event.eventTitle}</p>
-          <p className="hero__meta">
-            {event.dateLabel} · {event.timeLabel}
-          </p>
+          <p className="hero__meta">{event.dateLabel}</p>
         </div>
       </header>
 
@@ -27,9 +46,7 @@ export default function Invitation() {
 
         <div className="venue-block">
           <h3 className="venue-block__name">{event.church.name}</h3>
-          <p className="venue-block__meta">
-            {event.timeLabel} · {event.dateLabel}
-          </p>
+          <p className="venue-block__meta">{event.dateLabel}</p>
           <MapButtons googleMaps={event.church.googleMaps} />
         </div>
 
@@ -148,9 +165,7 @@ export default function Invitation() {
 
       <Section id="closing" className="closing">
         <h2 className="closing__title">See you on our special day</h2>
-        <p className="closing__meta">
-          {event.dateLabel} · {event.timeLabel}
-        </p>
+        <p className="closing__meta">{event.dateLabel}</p>
       </Section>
     </main>
   )

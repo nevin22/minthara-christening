@@ -167,6 +167,7 @@ a {
 
 .hero {
   position: relative;
+  /* Fallback before JS locks a pixel height once (avoids URL-bar resize jumps) */
   min-height: 100svh;
   display: grid;
   place-items: center;

@@ -3,9 +3,9 @@ export const event = {
   firstName: 'Minthara',
   eventTitle: 'Christening',
   dateLabel: 'September 6, 2026',
-  timeLabel: '1:00 PM',
-  // Asia/Manila
-  targetDate: '2026-09-06T13:00:00+08:00',
+  timeLabel: '',
+  // Asia/Manila — countdown to the calendar day (time TBA)
+  targetDate: '2026-09-06T00:00:00+08:00',
   church: {
     name: 'San Isidro Cathedral',
     location: 'Malaybalay, Bukidnon',
