@@ -36,21 +36,13 @@ export default function Invitation() {
           <p className="venue-block__meta">
             {event.timeLabel} · {event.dateLabel}
           </p>
-          <p className="venue-block__location">{event.church.location}</p>
-          <MapButtons
-            googleMaps={event.church.googleMaps}
-            appleMaps={event.church.appleMaps}
-          />
+          <MapButtons googleMaps={event.church.googleMaps} />
         </div>
 
         <div className="venue-block venue-block--later">
           <h3 className="venue-block__name">{event.reception.name}</h3>
           <p className="venue-block__meta">Reception after the ceremony</p>
-          <p className="venue-block__location">{event.reception.location}</p>
-          <MapButtons
-            googleMaps={event.reception.googleMaps}
-            appleMaps={event.reception.appleMaps}
-          />
+          <MapButtons googleMaps={event.reception.googleMaps} />
         </div>
       </Section>
 
@@ -69,13 +61,23 @@ export default function Invitation() {
         <p className="section__eyebrow">Our little berry</p>
         <h2 className="section__title">Moments with Minthara</h2>
         <p className="section__text">
-          A few sweet glimpses — photos coming soon.
+          A few sweet glimpses of our little girl.
         </p>
         <div className="gallery__grid">
-          {event.galleryPlaceholders.map((photo) => (
+          {event.gallery.map((photo) => (
             <figure key={photo.id} className="gallery__item">
-              <div className="gallery__placeholder">
-                <span>{photo.label}</span>
+              <div className="gallery__sparkles gallery__sparkles--left" aria-hidden="true">
+                <span className="sparkle sparkle--1" />
+                <span className="sparkle sparkle--2" />
+                <span className="sparkle sparkle--3" />
+              </div>
+              <div className="gallery__photo">
+                <img src={photo.src} alt={photo.alt} loading="lazy" />
+              </div>
+              <div className="gallery__sparkles gallery__sparkles--right" aria-hidden="true">
+                <span className="sparkle sparkle--2" />
+                <span className="sparkle sparkle--1" />
+                <span className="sparkle sparkle--3" />
               </div>
             </figure>
           ))}
@@ -151,16 +153,10 @@ export default function Invitation() {
       </Section>
 
       <Section id="closing" className="closing">
-        <motion.div
-          animate={{ scale: [1, 1.04, 1] }}
-          transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <h2 className="closing__title">See you on our special day</h2>
-          <p className="closing__name">{event.babyName}</p>
-          <p className="closing__meta">
-            {event.dateLabel} · {event.timeLabel}
-          </p>
-        </motion.div>
+        <h2 className="closing__title">See you on our special day</h2>
+        <p className="closing__meta">
+          {event.dateLabel} · {event.timeLabel}
+        </p>
       </Section>
     </main>
   )

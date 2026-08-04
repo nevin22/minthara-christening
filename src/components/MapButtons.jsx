@@ -1,4 +1,4 @@
-export default function MapButtons({ googleMaps, appleMaps }) {
+export default function MapButtons({ googleMaps }) {
   return (
     <div className="map-buttons">
       <a
@@ -7,15 +7,7 @@ export default function MapButtons({ googleMaps, appleMaps }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Open in Google Maps
-      </a>
-      <a
-        className="btn btn--map btn--soft"
-        href={appleMaps}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Open in Apple Maps
+        View map
       </a>
     </div>
   )
