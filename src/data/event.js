@@ -1,5 +1,5 @@
 export const event = {
-  babyName: 'Minthara Elise Prequencia',
+  babyName: 'Minthara Ellise Prequencia',
   firstName: 'Minthara',
   eventTitle: 'Christening',
   dateLabel: 'September 6, 2026',
@@ -29,6 +29,7 @@ export const event = {
     'Light-colored dresses (4–12 months)',
     'Soft onesies (4–12 months)',
     'Diapers :P',
+    'Milk (Enfamil Gentlease, 0–12 months)',
   ],
   reminders: [
     'Please refrain from kissing the celebrant',

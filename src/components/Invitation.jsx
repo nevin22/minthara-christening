@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { event } from '../data/event'
 import Section from './Section'
 import MapButtons from './MapButtons'
@@ -9,19 +8,14 @@ export default function Invitation() {
     <main className="invite">
       <header className="hero">
         <div className="hero__veil" aria-hidden="true" />
-        <motion.div
-          className="hero__content"
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div className="hero__content">
           <p className="hero__eyebrow">With joyful hearts, we invite you to the</p>
           <h1 className="hero__brand">{event.babyName}</h1>
           <p className="hero__title">{event.eventTitle}</p>
           <p className="hero__meta">
             {event.dateLabel} · {event.timeLabel}
           </p>
-        </motion.div>
+        </div>
       </header>
 
       <Section id="details" className="details">

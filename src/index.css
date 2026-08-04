@@ -30,7 +30,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -310,14 +310,41 @@ a {
 }
 
 .dress-code__swatch {
+  position: relative;
   width: 4.5rem;
   height: 4.5rem;
   margin: 0.5rem auto 1rem;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%, #ffe5ec, transparent 45%),
-    linear-gradient(145deg, #ff8fab, #e63956);
+  overflow: hidden;
   box-shadow: var(--shadow);
+  background: #ff8fab;
+}
+
+.dress-code__swatch::before {
+  content: '';
+  position: absolute;
+  inset: -35%;
+  background: conic-gradient(
+    from 0deg,
+    #ffe5ec,
+    #ffb3c1,
+    #ff8fab,
+    #e63956,
+    #ff8fab,
+    #ffb3c1,
+    #ffe5ec
+  );
+  filter: blur(12px);
+  animation: dressSwatchSpin 8s linear infinite;
+}
+
+@keyframes dressSwatchSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .dress-code__label strong {
@@ -360,22 +387,24 @@ a {
 }
 
 .gallery.section {
-  width: min(100% - 1rem, 860px);
+  width: min(100%, 2260px);
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
 }
 
 .gallery__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem 0.7rem;
+  gap: 1.5rem 0.45rem;
   min-width: 0;
 }
 
 .gallery__item {
   position: relative;
   display: grid;
-  grid-template-columns: 1.1rem minmax(0, 1fr) 1.1rem;
+  grid-template-columns: 0.95rem minmax(0, 1fr) 0.95rem;
   align-items: stretch;
-  gap: 0.15rem;
+  gap: 0.08rem;
 }
 
 .gallery__photo {
@@ -644,15 +673,15 @@ a {
   }
 
   .gallery.section {
-    width: min(100% - 2rem, 920px);
+    width: min(100% - 0.5rem, 2420px);
   }
 
   .gallery__grid {
-    gap: 1.5rem 1rem;
+    gap: 1.85rem 0.75rem;
   }
 
   .gallery__item {
-    grid-template-columns: 1.35rem minmax(0, 1fr) 1.35rem;
+    grid-template-columns: 1.15rem minmax(0, 1fr) 1.15rem;
   }
 
   .sparkle {
@@ -682,6 +711,10 @@ a {
   .sparkle {
     animation: none;
     opacity: 0.55;
+  }
+
+  .dress-code__swatch {
+    animation: none;
   }
 
   *,

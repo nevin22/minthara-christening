@@ -11,7 +11,7 @@ export default function DoorIntro({ onOpen }) {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <p className="door-screen__eyebrow">You&apos;re invited to</p>
-        <h1 className="door-screen__brand">Minthara Elise Christening</h1>
+        <h1 className="door-screen__brand">Minthara Ellise Christening</h1>
         <p className="door-screen__hint">Tap the door to open her invitation</p>
 
         <motion.button
