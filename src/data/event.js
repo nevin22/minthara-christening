@@ -15,16 +15,16 @@ export const event = {
       'https://maps.apple.com/?q=San%20Isidro%20Cathedral%20Malaybalay%20Bukidnon',
   },
   reception: {
-    name: "Loiza's Pavilion",
+    name: 'Fortune House Inn and Resort',
     location: 'Malaybalay, Bukidnon',
     googleMaps:
-      "https://www.google.com/maps/search/?api=1&query=Loiza's+Pavilion+Malaybalay+Bukidnon",
+      'https://www.google.com/maps/place/Fortune+House+Inn+and+Resort/@8.1010232,125.1260376,13z/data=!4m10!1m2!2m1!1sFortunes+Inn+%26+Resort+Malaybalay+Bukidnon!3m6!1s0x32ffa9007cb3bee9:0xb0463c6997bf7fa7!8m2!3d8.1486052!4d125.116407!15sCilGb3J0dW5lcyBJbm4gJiBSZXNvcnQgTWFsYXliYWxheSBCdWtpZG5vblorIilmb3J0dW5lcyBpbm4gJiByZXNvcnQgbWFsYXliYWxheSBidWtpZG5vbpIBDHJlc29ydF9ob3RlbJoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQydG9WMDR5ZEhaaFZ6a3lZa1pTV1dOVmF6RmxiSEIyVGxoYVRWZEdSUkFC4AEA-gEECAAQFA!16s%2Fg%2F11ml9fqb5d?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D',
     appleMaps:
-      "https://maps.apple.com/?q=Loiza's%20Pavilion%20Malaybalay%20Bukidnon",
+      'https://maps.apple.com/?q=Fortune%20House%20Inn%20and%20Resort%20Malaybalay%20Bukidnon',
   },
   dressCode: 'Pink',
-  // Replace with your Google Form link
-  rsvpFormUrl: 'https://forms.gle/REPLACE_WITH_YOUR_FORM',
+  rsvpFormUrl:
+    'https://docs.google.com/forms/d/e/1FAIpQLSfq1Gbv3BSZ6CI4aRJbFW2yxKvaLrLseXN-cPPcyqNX9a6ZiQ/viewform?usp=publish-editor',
   giftIdeas: [
     'Light-colored dresses (4–12 months)',
     'Soft onesies (4–12 months)',
@@ -43,6 +43,9 @@ export const event = {
     'Jasfer Sabes',
     'Alex Herald Daguplo',
     'Elton Roa',
+    'Kevin Galdo',
+    'Melvin Vallente',
+    'Drexler Obiena',
   ],
   godmothers: [
     'Sherilyn Dimaculangan',
@@ -50,6 +53,11 @@ export const event = {
     'Kimberly Sulatan',
     'Criselda Gumocio',
     'Ynna Albasin',
+    'Iarha Tomo',
+    'Darhyl Jay Olloves',
+    'Ellen Costa',
+    'Kesley Zoe Santiago',
+    'Gerlyn Seploc',
   ],
   gallery: [
     { id: 1, src: '/gallery/mint-01.png', alt: 'Minthara with birthday cake' },
