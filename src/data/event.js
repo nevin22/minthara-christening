@@ -60,11 +60,11 @@ export const event = {
     'Gerlyn Seploc',
   ],
   gallery: [
-    { id: 1, src: '/gallery/mint-01.png', alt: 'Minthara with birthday cake' },
-    { id: 2, src: '/gallery/mint-02.png', alt: 'Minthara wrapped in a towel' },
-    { id: 3, src: '/gallery/mint-03.png', alt: 'Minthara with a pink pacifier' },
-    { id: 4, src: '/gallery/mint-04.png', alt: 'Minthara in strawberry jam outfit' },
-    { id: 5, src: '/gallery/mint-05.png', alt: 'Minthara sleeping peacefully' },
-    { id: 6, src: '/gallery/mint-06.png', alt: 'Minthara in a cream headband' },
+    { id: 1, src: '/gallery/mint-01.png', alt: 'Minthara in a cream bow headband' },
+    { id: 2, src: '/gallery/mint-02.png', alt: 'Minthara with birthday cake in yellow' },
+    { id: 3, src: '/gallery/mint-03.png', alt: 'Minthara in her jam outfit with cake' },
+    { id: 4, src: '/gallery/mint-04.png', alt: 'Minthara sleeping peacefully' },
+    { id: 5, src: '/gallery/mint-05.png', alt: 'Minthara wrapped in a soft white towel' },
+    { id: 6, src: '/gallery/mint-06.png', alt: 'Minthara with a pink flower pacifier' },
   ],
 }
