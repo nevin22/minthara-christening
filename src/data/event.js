@@ -61,7 +61,7 @@ export const event = {
   ],
   gallery: [
     { id: 1, src: '/gallery/mint-01.png', alt: 'Minthara in a cream bow headband' },
-    { id: 2, src: '/gallery/mint-02.png', alt: 'Minthara with birthday cake in yellow' },
+    { id: 2, src: '/gallery/mint-02.png', alt: 'Minthara in yellow with her chocolate cake' },
     { id: 3, src: '/gallery/mint-03.png', alt: 'Minthara in her jam outfit with cake' },
     { id: 4, src: '/gallery/mint-04.png', alt: 'Minthara sleeping peacefully' },
     { id: 5, src: '/gallery/mint-05.png', alt: 'Minthara wrapped in a soft white towel' },

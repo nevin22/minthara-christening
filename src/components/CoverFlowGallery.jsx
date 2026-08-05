@@ -6,10 +6,7 @@ const SNAP_PROGRESS = 0.3
 const VELOCITY_SNAP = 0.4
 const SLOT_START = -4
 const SLOT_END = 5
-const SETTLE_MS = 480
-/** Keep the current front card on top until the next one is clearly centered. */
-const FRONT_HANDOFF = 0.22
-const FRONT_LOST = 1.15
+const SETTLE_MS = 500
 
 function mod(n, m) {
   return ((n % m) + m) % m
@@ -27,37 +24,29 @@ function nearestIndex(position) {
   return Math.round(position)
 }
 
-/**
- * Fully continuous motion from offset — no sticky/isFront jumps in the transform.
- * Paint order (DOM) uses a delayed front card so layering swaps only after
- * the next image is already risen into place.
- */
 function cardTransform(offset) {
   const abs = Math.abs(offset)
   const focus = clamp(1 - abs, 0, 1)
 
-  const x = offset * 52
-  const y = -focus * 24 + abs * 10
-  const z = focus * 180 - abs * 65
-  const scale = 0.72 + focus * 0.28
+  // Enough spacing that the midpoint layer change is mostly edge-to-edge
+  const x = offset * 68
+  const y = -focus * 8 + abs * 5
+  const z = focus * 120 - abs * 70
+  const scale = 0.8 + focus * 0.2
 
-  // No rotateY — angled edges + overflow clip cause a 1px pink seam flicker
   return `translate(-50%, -50%) translateX(${x}%) translateY(${y}px) translateZ(${z}px) scale(${scale})`
 }
 
-/** White wash over side cards — stronger the farther from center. */
 function cardWash(offset) {
   const abs = Math.abs(offset)
-  return clamp(abs * 0.38, 0, 0.72)
+  return clamp(abs * 0.42, 0, 0.78)
 }
 
 export default function CoverFlowGallery({ photos }) {
   const [position, setPosition] = useState(0)
-  const [front, setFront] = useState(0)
   const [dragging, setDragging] = useState(false)
   const stageRef = useRef(null)
   const positionRef = useRef(0)
-  const frontRef = useRef(0)
   const settleRafRef = useRef(0)
   const dragRef = useRef({
     pointerId: null,
@@ -81,28 +70,9 @@ export default function CoverFlowGallery({ photos }) {
 
   if (!count) return null
 
-  const syncFront = (pos) => {
-    const challenger = nearestIndex(pos)
-    const challengerAbs = Math.abs(challenger - pos)
-    const frontAbs = Math.abs(frontRef.current - pos)
-
-    let nextFront = frontRef.current
-    if (frontAbs > FRONT_LOST || challengerAbs <= FRONT_HANDOFF) {
-      nextFront = challenger
-    } else if (challenger !== frontRef.current && challengerAbs + 0.28 < frontAbs) {
-      nextFront = challenger
-    }
-
-    if (nextFront !== frontRef.current) {
-      frontRef.current = nextFront
-      setFront(nextFront)
-    }
-  }
-
   const setPositionNow = (value) => {
     positionRef.current = value
     setPosition(value)
-    syncFront(value)
   }
 
   const cancelSettle = () => {
@@ -124,8 +94,7 @@ export default function CoverFlowGallery({ photos }) {
 
     const tick = (now) => {
       const t = clamp((now - start) / SETTLE_MS, 0, 1)
-      const next = from + (target - from) * easeOutCubic(t)
-      setPositionNow(next)
+      setPositionNow(from + (target - from) * easeOutCubic(t))
 
       if (t < 1) {
         settleRafRef.current = requestAnimationFrame(tick)
@@ -229,6 +198,8 @@ export default function CoverFlowGallery({ photos }) {
   const slots = []
   for (let i = SLOT_START; i <= SLOT_END; i += 1) slots.push(base + i)
 
+  // Stable paint order (far → near). Avoid re-sorting every frame (that causes pops).
+  // Depth is handled by translateZ + a fine-grained z-index from distance.
   return (
     <div
       ref={stageRef}
@@ -247,18 +218,17 @@ export default function CoverFlowGallery({ photos }) {
             const photo = photos[mod(index, count)]
             const visualOffset = index - position
             const abs = Math.abs(visualOffset)
-            const isFront = index === front
-            const isActive = abs < 0.5 && isFront
+            const isActive = abs < 0.5
 
             return (
               <button
                 key={index}
                 type="button"
-                className={`coverflow__card${isFront ? ' coverflow__card--active' : ''}`}
+                className={`coverflow__card${isActive ? ' coverflow__card--active' : ''}`}
                 style={{
                   transform: cardTransform(visualOffset),
-                  // Layer swap is delayed until the next card is already risen
-                  zIndex: isFront ? 5 : 1,
+                  // Fine-grained so order tracks the drag instead of jumping in big steps
+                  zIndex: Math.round(1000 - abs * 1000),
                   '--wash': String(cardWash(visualOffset)),
                 }}
                 aria-label={photo.alt}

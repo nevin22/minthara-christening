@@ -402,6 +402,11 @@ a {
 }
 
 .coverflow {
+  /* Card size scales with viewport; stage height is derived so the center never clips */
+  --cf-card-w: clamp(10rem, 46vw, 16rem);
+  --cf-card-h: var(--cf-card-w);
+  --cf-stage-pad: clamp(2.25rem, 7vw, 3.5rem);
+
   width: 100vw;
   margin-top: 0.75rem;
   margin-left: calc(50% - 50vw);
@@ -419,12 +424,12 @@ a {
 
 .coverflow__stage {
   position: relative;
-  height: min(72vw, 420px);
+  height: calc(var(--cf-card-h) + var(--cf-stage-pad) * 2);
   /* Slightly wider than the clip so card edges never leave a 1px pink gap */
   width: calc(100% + 4px);
   margin-left: -2px;
   perspective: 1600px;
-  perspective-origin: 50% 42%;
+  perspective-origin: 50% 50%;
   overflow: visible;
 }
 
@@ -442,8 +447,8 @@ a {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(50vw, 210px);
-  aspect-ratio: 3 / 4;
+  width: var(--cf-card-w);
+  aspect-ratio: 1 / 1;
   border-radius: 0.85rem;
   overflow: hidden;
   background: #fff;
@@ -819,12 +824,9 @@ a {
     font-size: 0.92rem;
   }
 
-  .coverflow__stage {
-    height: 440px;
-  }
-
-  .coverflow__card {
-    width: 250px;
+  .coverflow {
+    --cf-card-w: clamp(12rem, 28vw, 16rem);
+    --cf-stage-pad: 3.75rem;
   }
 }
 
