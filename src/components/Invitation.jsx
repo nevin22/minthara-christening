@@ -3,6 +3,7 @@ import { event } from '../data/event'
 import Section from './Section'
 import MapButtons from './MapButtons'
 import Countdown from './Countdown'
+import CoverFlowGallery from './CoverFlowGallery'
 
 export default function Invitation() {
   const heroRef = useRef(null)
@@ -74,25 +75,7 @@ export default function Invitation() {
         <p className="section__text">
           A few sweet glimpses of our little girl.
         </p>
-        <div className="gallery__grid">
-          {event.gallery.map((photo) => (
-            <figure key={photo.id} className="gallery__item">
-              <div className="gallery__sparkles gallery__sparkles--left" aria-hidden="true">
-                <span className="sparkle sparkle--1" />
-                <span className="sparkle sparkle--2" />
-                <span className="sparkle sparkle--3" />
-              </div>
-              <div className="gallery__photo">
-                <img src={photo.src} alt={photo.alt} loading="lazy" />
-              </div>
-              <div className="gallery__sparkles gallery__sparkles--right" aria-hidden="true">
-                <span className="sparkle sparkle--2" />
-                <span className="sparkle sparkle--1" />
-                <span className="sparkle sparkle--3" />
-              </div>
-            </figure>
-          ))}
-        </div>
+        <CoverFlowGallery photos={event.gallery} />
       </Section>
 
       <Section id="gifts" className="gifts">
