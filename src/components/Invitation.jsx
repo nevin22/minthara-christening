@@ -108,14 +108,22 @@ export default function Invitation() {
 
       <Section id="godparents" className="godparents">
         <div className="godparents__sparkles" aria-hidden="true">
-          <span className="gp-sparkle gp-sparkle--1" />
-          <span className="gp-sparkle gp-sparkle--2" />
-          <span className="gp-sparkle gp-sparkle--3" />
-          <span className="gp-sparkle gp-sparkle--4" />
-          <span className="gp-sparkle gp-sparkle--5" />
-          <span className="gp-sparkle gp-sparkle--6" />
-          <span className="gp-sparkle gp-sparkle--7" />
-          <span className="gp-sparkle gp-sparkle--8" />
+          <span className="gp-sparkle gp-sparkle--sm gp-sparkle--1" />
+          <span className="gp-sparkle gp-sparkle--md gp-sparkle--2" />
+          <span className="gp-sparkle gp-sparkle--lg gp-sparkle--3" />
+          <span className="gp-sparkle gp-sparkle--sm gp-sparkle--4" />
+          <span className="gp-sparkle gp-sparkle--md gp-sparkle--5" />
+          <span className="gp-sparkle gp-sparkle--lg gp-sparkle--6" />
+          <span className="gp-sparkle gp-sparkle--sm gp-sparkle--7" />
+          <span className="gp-sparkle gp-sparkle--md gp-sparkle--8" />
+          <span className="gp-sparkle gp-sparkle--lg gp-sparkle--9" />
+          <span className="gp-sparkle gp-sparkle--sm gp-sparkle--10" />
+          <span className="gp-sparkle gp-sparkle--md gp-sparkle--11" />
+          <span className="gp-sparkle gp-sparkle--sm gp-sparkle--12" />
+          <span className="gp-sparkle gp-sparkle--lg gp-sparkle--13" />
+          <span className="gp-sparkle gp-sparkle--md gp-sparkle--14" />
+          <span className="gp-sparkle gp-sparkle--sm gp-sparkle--15" />
+          <span className="gp-sparkle gp-sparkle--md gp-sparkle--16" />
         </div>
         <p className="section__eyebrow">With love & guidance</p>
         <h2 className="section__title">Godparents</h2>
